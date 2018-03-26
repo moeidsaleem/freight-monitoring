@@ -1,0 +1,69 @@
+
+
+
+<div class="section section-signup page-header" style="background-image: url('http://naosi.pl/wp-content/uploads/2015/03/volvo-trucks-wallpaper-1680x1050.jpg');">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 ml-auto mr-auto">
+                <div class="card card-signup">
+                        <div class="card-header card-header-primary text-center">
+                            <h4>Login Admin</h4>
+                            <div class="social-line">
+                                <a href="#pablo" class="btn btn-link btn-just-icon">
+                                    <i class="fa fa-facebook-square"></i>
+                                </a>
+                                <a href="#pablo" class="btn btn-link btn-just-icon">
+                                    <i class="fa fa-twitter"></i>
+                                </a>
+                                <a href="#pablo" class="btn btn-link btn-just-icon">
+                                    <i class="fa fa-google-plus"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <p class="text-divider">FMS Admin Panelx <br>
+                            <label for="" *ngIf="err">         
+                                <small id="emailHelpId" class="form-text text-danger" *ngIf="err">{{err}}</small>
+                             </label>
+                        </p>
+                        
+                        <div class="card-body">
+                            <!-- <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="material-icons">face</i>
+                                </span>
+                                <input type="text" class="form-control" placeholder="First Name...">
+                            </div> -->
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="material-icons">email</i>
+                                </span>
+                                <input type="email"  [(ngModel)]="account.email" class="form-control" placeholder="Email...">
+                            </div>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="material-icons">lock_outline</i>
+                                </span>
+                                <input type="password" [(ngModel)]="account.password"  class="form-control" placeholder="Password...">
+                            </div>
+                            <!-- If you want to add a checkbox to this form, uncomment this code
+                            -->
+      <div class="form-check">
+          <label class="form-check-label">
+              <input class="form-check-input" type="checkbox" value="">
+              Remember Me
+              <span class="form-check-sign">
+                  <span class="check"></span>
+              </span>
+          </label>
+      </div> 
+      <h5 class="small mce-i-underline">Don't have an account? <strong class="text-info mce-i-link" routerLink="/signup">Click Here!</strong></h5>
+
+                        </div>
+                        <div class="card-footer justify-content-center">
+                            <a  (click)="login()"  class="btn btn-primary btn-lg text-light">Access Panel</a>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

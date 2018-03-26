@@ -1,0 +1,187 @@
+<div  class="profile-page " *ngIf="driver ">
+    <div class="page-header header-filter" data-parallax="true" style="background-image: url('http://containernation.com/images/sliders/s1.jpg');"></div>
+    <div class="main main-raised">
+            <div class="profile-content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6 ml-auto mr-auto">
+                            <div class="profile">
+                                <div class="avatar">
+                                    <img src="{{driver.personal_information?.profile_image}}" alt="Circle Image" class="img-raised rounded-circle img-fluid">
+                                </div>
+                                <div class="name">
+                                    <h3 class="title">{{driver.personal_information?.first_name +' '+driver.personal_information?.last_name || 'Admin Manager'}}</h3>
+                                    <h6>{{service._user?.role || 'Driver'}}</h6>
+                                    <button class="btn btn-warning btn-sm">Edit Profile</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="description text-center">
+                        <p>An artist of considerable range, Chet Faker &#x2014; the name taken by Melbourne-raised, Brooklyn-based Nick Murphy &#x2014; writes, performs and records all of his own music, giving it a warm, intimate feel with a solid groove structure. </p>
+                    </div>
+                   
+
+                    <div class="row">
+                        <div class="col-md-12 ml-auto mr-auto">
+                            <div class="profile-tabs">
+                                <ul class="nav nav-pills nav-pills-icons justify-content-center" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" href="#profile" role="tab" data-toggle="tab">
+                                            <i class="material-icons">person_pin_circle</i> Driver Location
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#trips" role="tab" data-toggle="tab">
+                                            <i class="material-icons">rv_hookup</i> Trips
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                            <a class="nav-link" href="#fuel" role="tab" data-toggle="tab">
+                                                <i class="material-icons">local_gas_station</i> Fuel Histroy
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                                <a class="nav-link" href="#maintenance" role="tab" data-toggle="tab">
+                                                    <i class="material-icons">local_car_wash</i> Maintenance
+                                                </a>
+                                            </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-content tab-space">
+                        <div class="tab-pane active text-center gallery" id="profile">
+                            <div class="row">
+                                <div class="col-md-12">
+
+                                
+                                    <h5> <u>Latitude:</u> {{location?.lat}}</h5>
+                                    <h5> <u>Latitude:</u> {{location?.long}}</h5>
+                                    <!-- <h5> <u>Driver ID:</u> {{driver.personal_information?.uid}}</h5> -->
+                                    <h5> <u>Speed:</u> {{location?.speed}}</h5>
+                                    
+                                    <section *ngIf="location">
+                                    <!-- this creates a google map on the page with the given lat/lng from -->
+                                    <!-- the component as the initial center of the map: -->
+                                    <agm-map [latitude]="location.lat" [longitude]="location.long">
+                                      <agm-marker [latitude]="location.lat" [longitude]="location.long"
+                                      [label]="atrix" zoom="4" [iconUrl]="ico" [label]="label"></agm-marker>
+                                      <!-- <agm-marker [latitude]="data.lat" [longitude]="data.long"
+                                      [label]="atrix"></agm-marker> -->
+                                      <agm-circle  [latitude]="location?.lat" [longitude]="location?.long" 
+                                      [radius]="4000"
+                                      [fillColor]="'red'"></agm-circle>
+                                    </agm-map>
+                                    
+                                    
+                                    </section>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane text-center gallery" id="trips">
+                            <div class="row text-center">
+                                         <div class="col-md-12 text-center">
+                                                <table id="fresh-table" class="table text-center">
+                                                    <thead>
+                                                            <th data-field="id">start Address</th>
+                                                            <th data-field="profile_image">End Address</th>
+                                                            <th data-field="name">Latitude</th>
+                                                        <th data-field="salary">Longitude</th>
+                                                        <th data-field="email">Time (departure)</th>
+                                                        <th data-field="country">Total Time</th>
+                                                        <!-- <th data-field="actions" data-formatter="operateFormatter" data-events="operateEvents">Actions</th> -->
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr *ngFor="let x of trip">
+                                                            <td>{{x?.starting_address}}</td>
+                                                            <td>{{x?.ending_address}}</td>
+                                                            <td>{{x?.lat}}</td>
+                                                            <td>{{x?.long}}</td>
+                                                            <td>{{x?.time}}</td>
+                                                            <td>{{x?.total_time }}</td>
+                                                            <td> 
+                                                                 <i (click)="details(x.personal_information.uid)" class="fa fa-delete fa-lg"></i>
+                                                            </td>
+                                                         
+                                                        </tr>
+                                                     
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            
+                            </div>
+                        </div>
+                        <div class="tab-pane text-center gallery" id="maintenance">
+                                <div class="row">
+                                        <div class="col-md-12">
+                                                <table id="fresh-table" class="table ">
+                                                        <thead>
+                                                                <th data-field="profile_image">Bill No</th>
+                                                                <th data-field="name">Type</th>
+                                                                <th data-field="salary">PRICE</th>
+                                                                <th data-field="salary">Description</th>
+                                                                <th data-field="actions" data-formatter="operateFormatter" data-events="operateEvents">Actions</th>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr *ngFor="let x of maintenance">
+                                                                    <td>{{x?.bill_no}}</td>
+                                                                    <td>{{x?.type}}</td>
+                                                                    <td>{{x?.price}}</td>
+                                                                    <td>{{x?.discription}}</td>
+                                                                    <td></td>
+                                                                    
+                                                          
+                                                                <td> 
+                                                                     <i (click)="details(x.personal_information.uid)" class="fa fa-delete fa-lg"></i>
+                                                                </td>
+                                                             
+                                                            </tr>
+                                                         
+                                                        </tbody>
+                                                    </table>
+                                        </div>
+                                    </div>
+                            </div>
+                        <div class="tab-pane text-center gallery" id="fuel">
+                            <div class="row">
+                                <div class="col-md-12">
+                                        <table id="fresh-table" class="table ">
+                                                <thead>
+                                                        <th data-field="profile_image">Bill No</th>
+                                                        <th data-field="name">Litres</th>
+                                                        <th data-field="salary">PRICE</th>
+                                                        <th data-field="salary">Image</th>
+                                                        <th data-field="actions" data-formatter="operateFormatter" data-events="operateEvents">Actions</th>
+                                                </thead>
+                                                <tbody>
+                                                    <tr *ngFor="let x of fuel">
+                                                            <td>{{x?.bill_no}}</td>
+                                                            <td>{{x?.litre}}</td>
+                                                            <td>{{x?.price}}</td>
+                                                            <td><img src="{{x.image?.bill_image}}" style="width:60px;height:60px;"/></td>
+                                                            <td></td>
+                                                            
+                                                  
+                                                        <td> 
+                                                             <i (click)="details(x.personal_information.uid)" class="fa fa-edit fa-lg"></i>
+                                                        </td>
+                                                     
+                                                    </tr>
+                                                 
+                                                </tbody>
+                                            </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+
+
+
+
+
+

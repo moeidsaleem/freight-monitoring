@@ -1,0 +1,155 @@
+<div  class="profile-page ">
+        <div class="page-header header-filter" data-parallax="true" style="background-image: url('http://containernation.com/images/sliders/s1.jpg');"></div>
+        <div class="main main-raised">
+                <div class="profile-content">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6 ml-auto mr-auto">
+                                <div class="profile">
+                                    <div class="avatar">
+                                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0hCZuZ6mp_bJznIMnnS7YIJ5USqM4q8h04D62U04Tt26IX3iZ" alt="Circle Image" class="img-raised rounded-circle img-fluid">
+                                    </div>
+                                    <div class="name">
+                                        <h3 class="title">{{service._user?.name || 'Admin Manager'}}</h3>
+                                        <h6>{{service._user?.role || 'Administrator'}}</h6>
+                                        <button class="btn btn-warning btn-sm">Edit Profile</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="description text-center">
+                            <p>An artist of considerable range, Chet Faker &#x2014; the name taken by Melbourne-raised, Brooklyn-based Nick Murphy &#x2014; writes, performs and records all of his own music, giving it a warm, intimate feel with a solid groove structure. </p>
+                        </div>
+                        <div class="fresh-table full-color-orange">
+                                <!--    Available colors for the full background: full-color-blue, full-color-azure, full-color-green, full-color-red, full-color-orange
+                                        Available colors only for the toolbar: toolbar-color-blue, toolbar-color-azure, toolbar-color-green, toolbar-color-red, toolbar-color-orange
+                                -->
+                            
+                                    <table id="fresh-table" class="table">
+                                        <thead>
+                                                <th data-field="id">ID</th>
+                                                <th data-field="profile_image">Photo</th>
+                                                <th data-field="name">Name</th>
+                                            <th data-field="salary">Phone</th>
+                                            <th data-field="email">Email</th>
+                                            <th data-field="country">Country</th>
+                                            <th data-field="actions" data-formatter="operateFormatter" data-events="operateEvents">Actions</th>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let x of drivers">
+                                                <td>{{x.personal_information?.uid}}</td>
+                                                <td><img src="{{x.personal_information?.profile_image}}" style="width:60px;height:60px;border-radius:200px;"
+                                                     class=" avatar img-rounded img-circle" alt=""></td>
+                                                <td>{{x.personal_information?.first_name + ' ' + x.personal_information?.last_name}}</td>
+                                                <td>{{x.personal_information?.phone_number}}</td>
+                                                <td>{{x.personal_information?.email}}</td>
+                                                <td>{{x.personal_information?.country || 'Pakistan'}}</td>
+                                                <td> 
+                                                     <i (click)="details(x.personal_information.uid)" class="fa fa-edit fa-lg"></i>
+                                                </td>
+                                             
+                                            </tr>
+                                         
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                        <!-- <div class="row">
+                            <div class="col-md-6 ml-auto mr-auto">
+                                <div class="profile-tabs">
+                                    <ul class="nav nav-pills nav-pills-icons justify-content-center" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" href="#studio" role="tab" data-toggle="tab">
+                                                <i class="material-icons">people_outline</i> Drivers
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#works" role="tab" data-toggle="tab">
+                                                <i class="material-icons">palette</i> Trips
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#favorite" role="tab" data-toggle="tab">
+                                                <i class="material-icons">favorite</i> Favorite
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-content tab-space">
+                            <div class="tab-pane active text-center gallery" id="studio">
+                                <div class="row">
+                                    <div class="col-md-3 ml-auto">
+                                        <img src="../assets/img/kit/free/examples/studio-1.jpg" class="rounded">
+                                        <img src="../assets/img/kit/free/examples/studio-2.jpg" class="rounded">
+                                    </div>
+                                    <div class="col-md-3 mr-auto">
+                                        <img src="../assets/img/kit/free/examples/studio-5.jpg" class="rounded">
+                                        <img src="../assets/img/kit/free/examples/studio-4.jpg" class="rounded">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane text-center gallery" id="works">
+                                <div class="row">
+                                    <div class="col-md-3 ml-auto">
+                                        <img src="../assets/img/kit/free/examples/olu-eletu.jpg" class="rounded">
+                                        <img src="../assets/img/kit/free/examples/clem-onojeghuo.jpg" class="rounded">
+                                        <img src="../assets/img/kit/free/examples/cynthia-del-rio.jpg" class="rounded">
+                                    </div>
+                                    <div class="col-md-3 mr-auto">
+                                        <img src="../assets/img/kit/free/examples/mariya-georgieva.jpg" class="rounded">
+                                        <img src="../assets/img/kit/free/examples/clem-onojegaw.jpg" class="rounded">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane text-center gallery" id="favorite">
+                                <div class="row">
+                                    <div class="col-md-3 ml-auto">
+                                        <img src="../assets/img/kit/free/examples/mariya-georgieva.jpg" class="rounded">
+                                        <img src="../assets/img/kit/free/examples/studio-3.jpg" class="rounded">
+                                    </div>
+                                    <div class="col-md-3 mr-auto">
+                                        <img src="../assets/img/kit/free/examples/clem-onojeghuo.jpg" class="rounded">
+                                        <img src="../assets/img/kit/free/examples/olu-eletu.jpg" class="rounded">
+                                        <img src="../assets/img/kit/free/examples/studio-1.jpg" class="rounded">
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+          </div>
+
+
+
+
+
+
+
+<!-- 
+<div class="col-lg-12 col-md-12">
+    <div class="card">
+        <div class="card-header" data-background-color="orange">
+            <h4 class="title">Driver Stats</h4>
+            <p class="category">New Drivers recently added</p>
+        </div>
+        <div class="card-content table-responsive text-center">
+            <table class="table table-hover">
+                <thead class="text-warning">
+                    <th>ID</th>
+                    <th>Email</th>
+                    <th></th>
+                </thead>
+                <tbody *ngIf="drivers">
+                    <tr *ngFor="let x of drivers">
+                        <td>{{x?.key}}</td>
+                        <td>{{x?.name}}</td>
+                        <td><button class="btn btn-primary" (click)="details(x.key)">Details</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div> -->
