@@ -11,6 +11,7 @@ import { AgmCoreModule } from '@agm/core';
 })
 export class DriverComponent implements OnInit {
   data;
+  zoomValue=13;
   ico ='https://www.metlink.org.nz/themes/metlink2015/images/icons/train.svg';
   label ='train1'
    constructor(private router:Router, private route:ActivatedRoute, private service:ApiService){

@@ -26,10 +26,13 @@ export class ApiService {
   }
 
   login(account){
-    return this.afuth.auth.signInWithEmailAndPassword(account.email, account.password).then(res=>{
+    return this.afuth.auth.signInWithEmailAndPassword(account.email, account.password)
+    .then(res=>{
       this.uid =res.uid;
       this.setUser(res.uid);
     
+    },err=>{
+      console.log(err);
     })
   }
 

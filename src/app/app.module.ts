@@ -22,13 +22,13 @@ import { ProfileComponent } from './profile/profile.component';
 
 
 let ROUTES =[
-  { path:'', redirectTo:'home', pathMatch:'full'},
+{ path:'', redirectTo:'home', pathMatch:'full'},
   { path:'login', component:LoginComponent},
   { path:'signup', component:SignupComponent},
   { path:'dashboard', component:DashboardComponent},
-    {path:'driver',component:DriverComponent},
-    {path:'home', component:LandingComponent},
-    {path:'profile', component:ProfileComponent}
+  {path:'driver',component:DriverComponent},
+  {path:'home', component:LandingComponent},
+  {path:'profile', component:ProfileComponent}
   ];
 
 @NgModule({

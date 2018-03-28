@@ -64,14 +64,14 @@
                                     <section *ngIf="location">
                                     <!-- this creates a google map on the page with the given lat/lng from -->
                                     <!-- the component as the initial center of the map: -->
-                                    <agm-map [latitude]="location.lat" [longitude]="location.long">
+                                    <agm-map [zoom]="zoomValue" [latitude]="location.lat" [longitude]="location.long">
                                       <agm-marker [latitude]="location.lat" [longitude]="location.long"
-                                      [label]="atrix" zoom="4" [iconUrl]="ico" [label]="label"></agm-marker>
+                                      [label]="atrix" [iconUrl]="ico" [label]="label"></agm-marker>
                                       <!-- <agm-marker [latitude]="data.lat" [longitude]="data.long"
                                       [label]="atrix"></agm-marker> -->
                                       <agm-circle  [latitude]="location?.lat" [longitude]="location?.long" 
                                       [radius]="4000"
-                                      [fillColor]="'red'"></agm-circle>
+                                      [fillColor]="'green'"></agm-circle>
                                     </agm-map>
                                     
                                     
