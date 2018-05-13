@@ -1,7 +1,7 @@
 <nav class="navbar navbar-color-on-scroll navbar-transparent    fixed-top  navbar-expand-lg " color-on-scroll="100" id="sectionsNav">
     <div class="container">
         <div class="navbar-translate">
-            <a class="navbar-brand" routerLink="/home">Freight Management System 2 </a>
+            <a class="navbar-brand" routerLink="/landing">Freight Management System 2 </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
                 <span class="navbar-toggler-icon"></span>
@@ -10,7 +10,7 @@
         </div>
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav ml-auto">
-                <li class="dropdown nav-item">
+                <!-- <li class="dropdown nav-item">
                     <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
                         <i class="material-icons">apps</i> More
                     </a>
@@ -22,13 +22,18 @@
                             <i class="material-icons">content_paste</i> Contact Team
                         </a>
                     </div>
-                </li>
+                </li> -->
                 <li class="nav-item">
-                    <a class="nav-link"  routerLink="/login" *ngIf="service?.loggedIn == false">
+                    <a class="nav-link"  routerLink="/login" *ngIf="!service?.uid">
                         <i class="material-icons">cloud_download</i> Login
                     </a>
-                    <a class="nav-link"  routerLink="/profile" *ngIf="service?.loggedIn == true">
+                    <a class="nav-link" *ngIf="service?.uid" (click)="goProfile()">
                         <i class="material-icons">cloud_download</i> Profile
+                    </a>
+                </li>
+                <li class="nav-item" *ngIf="service?.uid">
+                    <a class="nav-link" rel="tooltip" title="" data-placement="bottom" (click)="logout()">
+                        <i class="fa fa-sign-out"></i> LOGOUT
                     </a>
                 </li>
                 <li class="nav-item">

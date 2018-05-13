@@ -12,7 +12,7 @@
                                     <div class="name">
                                         <h3 class="title">{{service._user?.name || 'Admin Manager'}}</h3>
                                         <h6>{{service._user?.role || 'Administrator'}}</h6>
-                                        <button class="btn btn-warning btn-sm">Edit Profile</button>
+                                        <!-- <button class="btn btn-warning btn-sm">Edit Profile</button> -->
                                     </div>
                                 </div>
                             </div>
@@ -45,7 +45,8 @@
                                                 <td>{{x.personal_information?.email}}</td>
                                                 <td>{{x.personal_information?.country || 'Pakistan'}}</td>
                                                 <td> 
-                                                     <i (click)="details(x.personal_information.uid)" class="fa fa-edit fa-lg"></i>
+                                                    <i (click)="details(x.personal_information.uid)" class="fa fa-edit fa-lg"></i>
+                                                    <i (click)="delete(x.personal_information.uid)" class="fa fa-remove fa-lg"></i>
                                                 </td>
                                              
                                             </tr>

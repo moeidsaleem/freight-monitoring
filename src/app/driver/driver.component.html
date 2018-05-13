@@ -7,12 +7,12 @@
                         <div class="col-md-6 ml-auto mr-auto">
                             <div class="profile">
                                 <div class="avatar">
-                                    <img src="{{driver.personal_information?.profile_image}}" alt="Circle Image" class="img-raised rounded-circle img-fluid">
+                                    <img [src]="driver.personal_information?.profile_image " alt="Circle Image" class="img-raised rounded-circle img-fluid">
                                 </div>
                                 <div class="name">
                                     <h3 class="title">{{driver.personal_information?.first_name +' '+driver.personal_information?.last_name || 'Admin Manager'}}</h3>
                                     <h6>{{service._user?.role || 'Driver'}}</h6>
-                                    <button class="btn btn-warning btn-sm">Edit Profile</button>
+                                    <button class="btn btn-warning btn-sm" (click)="editDriverProfile()">Edit Profile</button>
                                 </div>
                             </div>
                         </div>
@@ -126,12 +126,10 @@
                                                         <tbody>
                                                             <tr *ngFor="let x of maintenance">
                                                                     <td>{{x?.bill_no}}</td>
-                                                                    <td>{{x?.type}}</td>
+                                                                    <td>{{x?.type_of_wrok}}</td>
                                                                     <td>{{x?.price}}</td>
                                                                     <td>{{x?.discription}}</td>
                                                                     <td></td>
-                                                                    
-                                                          
                                                                 <td> 
                                                                      <i (click)="details(x.personal_information.uid)" class="fa fa-delete fa-lg"></i>
                                                                 </td>

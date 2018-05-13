@@ -22,10 +22,13 @@ export class DriverComponent implements OnInit {
    maintenance:any;
    fuel:any;
    trip:any;
+   driverId;
    ngOnInit() {
     this.route.params.subscribe(res=>{
       console.log(res.driverId);
       let key = res.driverId;
+      this.driverId = res.driverId;
+
       this.service.getDriver(key).subscribe(driver=>{
         this.driver =driver;
         console.log(this.driver);
@@ -53,6 +56,11 @@ export class DriverComponent implements OnInit {
      })
  }
 
+
+ editDriverProfile(id){
+   this.router.navigate(['dashboard/edit',{driverId: this.driverId}])
+
+ }
  fetchDriver(){
   //  this.service.getDriver()
  }

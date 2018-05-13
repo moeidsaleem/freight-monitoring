@@ -27,13 +27,14 @@ export class ApiService {
 
   login(account){
     return this.afuth.auth.signInWithEmailAndPassword(account.email, account.password)
-    .then(res=>{
-      this.uid =res.uid;
-      this.setUser(res.uid);
-    
-    },err=>{
-      console.log(err);
-    })
+  
+  }
+  updateDriver(driverId, driver){
+    return this.db.object('users/drivers/'+driverId).update(driver);
+
+  }
+  deleteDriver(driverId){
+    return this.db.object('users/drivers/'+driverId).remove();
   }
 
   setUser(uid){

@@ -31,10 +31,15 @@ export class DashboardComponent implements OnInit {
      // this.service.currentLoc = this.location;
      // this.service.currentLoc.driverId = key;
       console.log(key);
-      this.router.navigate(['/driver',{driverId:key}])
+      this.router.navigate(['/dashboard/driver/',{driverId:key}])
     })
   }
 
+  delete(id){
+    this.service.deleteDriver(id).then(resp=>{
+      console.log('driver Deleted');
+    })
+  }
 
 
 

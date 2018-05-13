@@ -19,16 +19,25 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { LandingComponent } from './landing/landing.component';
 import { ProfileComponent } from './profile/profile.component';
+import { AuthGuard } from './auth.guard';
+import { DashhomeComponent } from './dashhome/dashhome.component';
+import { EditprofileComponent } from './editprofile/editprofile.component';
 
 
 let ROUTES =[
-{ path:'', redirectTo:'home', pathMatch:'full'},
-  { path:'login', component:LoginComponent},
-  { path:'signup', component:SignupComponent},
-  { path:'dashboard', component:DashboardComponent},
-  {path:'driver',component:DriverComponent},
-  {path:'home', component:LandingComponent},
-  {path:'profile', component:ProfileComponent}
+{ path:'', redirectTo:'landing', pathMatch:'full'},
+{ path:'login', component:LoginComponent},
+{ path:'landing', component:LandingComponent},
+{ path:'signup', component:SignupComponent},
+  { path:'dashboard', component:DashhomeComponent, CanActivate:[AuthGuard] ,children:[
+    { path:'', redirectTo:'home', pathMatch:'full'},
+    {path:'driver',component:DriverComponent},
+    {path:'edit',component:EditprofileComponent},
+    {path:'home', component:DashboardComponent},
+    {path:'profile', component:ProfileComponent}
+  ]
+},
+
   ];
 
 @NgModule({
@@ -42,7 +51,9 @@ let ROUTES =[
     HeaderComponent,
     FooterComponent,
     LandingComponent,
-    ProfileComponent
+    ProfileComponent,
+    DashhomeComponent,
+    EditprofileComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
